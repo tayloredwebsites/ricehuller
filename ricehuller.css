@@ -1,0 +1,250 @@
+/* styles.css */
+
+/* *************************************************************************************
+From normalize.css
+*/
+
+/* remove list-style from lists */
+ol, ul {
+	list-style: none;
+}
+
+/* normalize margins and padding */
+html, body, div, dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+pre, form, fieldset, input, p, blockquote, th, td
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+/* *************************************************************************************
+set height and width to always include border
+*/
+* {
+  box-sizing: border-box;
+}
+
+/* *************************************************************************************
+handy classes
+*/
+.center {
+  text-align: center;
+}
+
+.offscreen {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+
+.row-label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+
+/* *************************************************************************************
+Global Site Styles
+*/
+
+html {
+	margin:0px;
+	font-size: 16px;		/* root font size  of 1rem */
+}
+
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+}
+a:link, a:visited {
+	color: #172632;
+}
+a:hover {
+	color: blue;
+}
+
+h1 {line-height: 2.4rem; font-size: 2.2rem; font-weight: bold;}
+h2 {line-height: 2.2rem; font-size: 2.0rem; font-weight: bold;}
+h3 {line-height: 2.0rem; font-size: 1.8rem; font-weight: bold;}
+h4 {line-height: 1.8rem; font-size: 1.6rem; font-weight: bold;}
+h5 {line-height: 1.6rem; font-size: 1.4rem; font-weight: bold;}
+h6 {line-height: 1.4rem; font-size: 1.2rem; font-weight: bold;}
+p {line-height: 1.2rem; font-size: 1.0rem;}
+
+
+/* *************************************************************************************
+Layout
+*/
+
+body {
+  background: url(./RiceTiledBgV1.png);
+}
+
+/* #content_main ul {margin: 1em 0px 1em 2em;}
+#content_main ul li {line-height: 1.6rem; font-size: 1.4rem; margin-left: 2.0rem; list-style-type:disc;} */
+body > header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #ffffffcc;
+  margin: 0 10px;
+}
+
+body > header > section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#top-menu {
+  padding: 10px;
+  margin: 0 10px;
+  background-color: #ffffffcc;
+  border-radius: 0.5em;
+	box-shadow: 0.2em 0.2em 0.4em #172632;
+  /* center the nav items */
+  display: flex;
+  justify-content: center;
+}
+#top-menu ul {
+  /* put nav items in a row*/
+  display: flex;
+  flex-direction: row;
+}
+
+
+#font-sizer {
+  width: 60px;
+}
+
+#main-header {
+  width: 60%;
+  text-align: center;
+}
+
+#font-sizer li {
+  text-align: center;
+}
+
+#font-sizer li span {
+  display: inline-block;
+  padding: 0 .5em;
+  margin: .2em 0;
+	background-color: #f1be11;
+  border-radius: 0.5em;
+	box-shadow: 0.2em 0.2em 0.4em #172632;
+}
+
+
+#top-sys-menu ul {
+  /* align li items horozontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 1.4rem;
+  font-weight: bold;
+  height: 100px;
+}
+
+#top-menu li span {
+  display: inline-block;
+  padding: 0 .7em;
+  margin: 0 .3em;
+	line-height: 1.5em;
+	background-color: #f1be11;
+  border-radius: 0.5em;
+	box-shadow: 0.2rem 0.2rem 0.4rem #172632;
+}
+
+#pri-nav ul.nav_info li {
+	width:18em;
+	padding:1em 1em 0 1em;
+}
+
+#pri-nav ul li a {
+	display: block;
+}
+
+main > header {
+  text-align: center;
+}
+
+main > section {
+  /* align sections across the full page */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+main > section > article {
+  background-color: #ffffffcc;
+  margin: 10px;
+  padding: 10px;
+  width: 370px;
+}
+main > section > article > header {
+  text-align: center;
+}
+
+header, article {
+  /* background-color: rgba(0,0,0, 0.05); */
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+
+/* *************************************************************************************
+Main header
+*/
+
+#logo {
+	/* background-color: white; */
+	/* background-image: url(./RiceLogo2.png); */
+	width: 120px;
+	height: 100px;
+}
+
+#font-sizer #smaller-font {
+  font-size: 8px;
+  line-height: 10px;
+  title: "Set Site Font Size to the smallest size font";
+}
+#font-sizer #small-font {
+  font-size: 11px;
+  line-height: 13px;
+  title: "Set Site Font Size to the smaller sized font";
+}
+#font-sizer #med-font {
+  font-size: 14px;
+  line-height: 16px;
+  title: "Set Site Font Size to the medium sized font";
+}
+#font-sizer #large-font {
+  font-size: 18px;
+  line-height: 20px;
+  title: "Set Site Font Size to the larger sized font";
+}
+#font-sizer #larger-font {
+  font-size: 22px;
+  line-height: 24px;
+}
+
+.youtube-video {
+  margin-top: 10px;
+  /* width: 400px;
+  height: 225px; */
+  width: 350px;
+  height: 196px;
+}
