@@ -1,10 +1,82 @@
 /* *************************************************************************************
-window onload event handler function
+window onload event handler function to unobtrusively link javascript events to javascript functions
+unobtrusive - no javascript is needed or being obtrusive in the HTML for javascript to function in the page
+html page should have a script tag in the header that looks like:
+  <script>
+    window.onload = riceHullerOnLoad;
+  </script>
 */
 function riceHullerOnLoad() {
-  // set the onclick event on the elements with a class of expand-collapse
-  elementsByQuery(".expand-collapse").addEventListener("click", (event) => expanderCollapser(event));
+  // This function sets all of the event listeners for the elements on the web page
+  // There should normally be only one window on load event handler, so combining of them may be necessary
+  // event listeners are set here, attaching functions defined below
+
+  // set the onclick event on the header element of all expand-collapse article element
+  elementsByQuery(".expand-collapse").forEach(
+    el => {
+      console.log("element with the expand-collapse class: ".concat(el.tagName))
+      // el should be an article element, where the expand-collapse class was added
+      const children = el.children;
+      const head = el.querySelector("header");
+      if (head !== null) {
+        console.log("header for the expand-collapse class: ".concat(head.tagName))
+        head.addEventListener("click", (event) => expanderCollapser(event))
+      } else {
+        console.log("header is missing under expand-collapse class")
+      }
+      // el.addEventListener("click", (event) => expanderCollapser(event))
+    }
+  )
+
+  // prevent page reloads after clicking on a tags with target _blank
+  elementsByQuery("a").forEach(
+    el => el.addEventListener("click", (event) => blankATags(event))
+  )
 }
+
+
+/* *************************************************************************************
+unobtrusive javascript event functions called by the window onload event handler function.
+see riceHullerOnLoad function called in html script tag, and at the top of this document
+  - set the event handlers in the onLoad function to call the functions defined below
+*/
+
+// expands or collapses the section of an article when the header is clicked
+function expanderCollapser(event) {
+  // console.log("Clicked a header element with an article with the expand-collapse class")
+  const elem = event.currentTarget;
+  // console.log("called expanderCollapser on element with with tag: ".concat(elem.tagName));
+  const parent = elem.parentElement;
+  // console.log("parent with expanderCollapser on element with with tag: ".concat(parent.tagName));
+  // console.log("ARTICLE element classList: ".concat(parent.classList));
+  const wasExpanded = parent.classList.contains("expanded");
+  // console.log("parent element was element initially expanded: ".concat(wasExpanded.toString()));
+
+  if (wasExpanded === true) {
+    parent.classList.remove("expanded");
+  } else {
+    parent.classList.add("expanded");
+  }
+};
+
+// prevent page refresh when clicking on an a tag with a _blank target
+function blankATags(event) {
+  // console.log("Clicked an element with the a tag")
+  const elem = event.currentTarget;
+  // console.log("called blankATags on element with with tag: ".concat(elem.tagName));
+  const href = (elem.hasAttribute("href") === true) ? elem.getAttribute("href") : "";
+  // console.log("href: ".concat(href.toString()));
+  const blankTarget = elem.hasAttribute("target") && elem.getAttribute("target") === "_blank";
+  // console.log("blankTarget: ".concat(blankTarget.toString()));
+  if (blankTarget === true && href !== "" && href !== "#") {
+    // console.log("open window for: ".concat(href.toString()));
+    window.open(href)
+    event.preventDefault();
+    event.stopPropagation();
+    }
+};
+
+
 
 /* *************************************************************************************
 (global) constants
@@ -29,7 +101,7 @@ function elementsByClass(tagClass) {
 }
 
 function elementsByQuery(selector) {
-  return document.querySelector(selector)
+  return document.querySelectorAll(selector)
 }
 
 function setErrorMsg(errMsg) {
@@ -42,43 +114,6 @@ function setErrorMsg(errMsg) {
     console.log("ERROR: Unable to display error message: " + errMsg);
   }
 }
-
-
-/* *************************************************************************************
-unobtrusive onclick detections, which must be called in the window.onload event (must be called only once)
-see riceHullerOnLoad function called in html script tag, and at the top of this document
-*/
-
-function expanderCollapser(event) {
-  console.log("Clicked an element with the expand-collapse class")
-  const elem = event.currentTarget;
-  console.log("called expanderCollapser on element with with tag: ".concat(elem.tagName));
-  const wasExpanded = elem.classList.contains("expanded");
-  console.log("was element initially expanded: ".concat(wasExpanded.toString()));
-
-  // var headerElem = null;
-  // var sectionElem = null;
-  // // get the SECTION and HEADER children of the element clicked on
-  // for (let child of elem.children) {
-  //   console.log("checking sibing with tag: ".concat(child.tagName));
-  //   if (child.tagName === "SECTION") {
-  //     console.log("We MATCHED a sibing with SECTION tag");
-  //     sectionElem = child;
-  //   }  else if (child.tagName === "HEADER") {
-  //     console.log("We MATCHED a sibing with HEADER tag");
-  //     headerElem = child;
-  //   };
-  //   if (sectionElem !== null && headerElem !== null) { break };
-  // };
-  console.log("Initial element classList: ".concat(elem.classList));
-  if (wasExpanded === true) {
-    elem.classList.remove("expanded");
-  } else {
-    elem.classList.add("expanded");
-  }
-
-};
-
 
 /* *************************************************************************************
 called functions

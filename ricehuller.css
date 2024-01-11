@@ -32,6 +32,12 @@ handy classes
 .center {
   text-align: center;
 }
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
 
 .offscreen {
 	position:absolute;
@@ -47,6 +53,11 @@ handy classes
   margin-right: 10px;
 }
 
+.notify {
+  font-size: larger;
+  color: #005500;
+  background-color: #ffff00cc;
+}
 
 /* *************************************************************************************
 Global Site Styles
@@ -63,10 +74,10 @@ body {
 
 a {
 	text-decoration: none;
-	font-weight: bold;
+	/* font-weight: bold; */
 }
 a:link, a:visited {
-	color: #172632;
+	color: darkblue;
 }
 a:hover {
 	color: blue;
@@ -193,7 +204,8 @@ main > article.thin {
 main > article.wide {
   width: 740px;
 }
-main > article.table {
+main > article.table,
+main > article.widest {
   width: 100%;
 }
 main > article > header {
@@ -284,9 +296,11 @@ table tbody tr:nth-of-type(even) > * {
 }
 .expand-collapse:before {
   content: '\25b8'; /* Unicode character for Black right-pointing triangle */
+  pointer-events: none;
 }
 .expand-collapse.expanded:before {
   content: '\25be'; /* Unicode character for Black down pointing triangle */
+  pointer-events: none;
 }
 .expand-collapse.expanded section {
   display: block;
