@@ -11,18 +11,18 @@ function riceHullerOnLoad() {
   // There should normally be only one window on load event handler, so combining of them may be necessary
   // event listeners are set here, attaching functions defined below
 
-  // set the onclick event on the header element of all expand-collapse article element
-  elementsByQuery(".expand-collapse").forEach(
+  // set the onclick event on the header element of all expandCollapse article element
+  elementsByQuery(".expandCollapse").forEach(
     el => {
-      console.log("element with the expand-collapse class: ".concat(el.tagName))
-      // el should be an article element, where the expand-collapse class was added
+      console.log("element with the expandCollapse class: ".concat(el.tagName))
+      // el should be an article element, where the expandCollapse class was added
       const children = el.children;
       const head = el.querySelector("header");
       if (head !== null) {
-        console.log("header for the expand-collapse class: ".concat(head.tagName))
+        console.log("header for the expandCollapse class: ".concat(head.tagName))
         head.addEventListener("click", (event) => expanderCollapser(event))
       } else {
-        console.log("header is missing under expand-collapse class")
+        console.log("header is missing under expandCollapse class")
       }
       // el.addEventListener("click", (event) => expanderCollapser(event))
     }
@@ -43,7 +43,7 @@ see riceHullerOnLoad function called in html script tag, and at the top of this 
 
 // expands or collapses the section of an article when the header is clicked
 function expanderCollapser(event) {
-  // console.log("Clicked a header element with an article with the expand-collapse class")
+  // console.log("Clicked a header element with an article with the expandCollapse class")
   const elem = event.currentTarget;
   // console.log("called expanderCollapser on element with with tag: ".concat(elem.tagName));
   const parent = elem.parentElement;
@@ -120,7 +120,7 @@ called functions
 */
 
 function setFontSize(fontSize) {
-  htmlElems = getByName("html");
+  htmlElems = elementsByName("html");
   if (htmlElems.length == 1) {
     htmlElems[0].style.fontSize = fontSize; 
   } else {

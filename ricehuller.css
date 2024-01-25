@@ -32,14 +32,14 @@ handy classes
 .center {
   text-align: center;
 }
-.left {
+.textLeft {
   text-align: left;
 }
-.right {
+.textRight {
   text-align: right;
 }
 
-.offscreen {
+.offScreen {
 	position:absolute;
 	left:-10000px;
 	top:auto;
@@ -48,7 +48,7 @@ handy classes
 	overflow:hidden;
 }
 
-.row-label {
+.rowLabel {
   font-weight: bold;
   margin-right: 10px;
 }
@@ -57,6 +57,23 @@ handy classes
   font-size: larger;
   color: #005500;
   background-color: #ffff00cc;
+}
+
+.flexRow {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.roundedCorners {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 /* *************************************************************************************
@@ -103,9 +120,6 @@ body {
 /* #content_main ul {margin: 1em 0px 1em 2em;}
 #content_main ul li {line-height: 1.6rem; font-size: 1.4rem; margin-left: 2.0rem; list-style-type:disc;} */
 body > header {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
   padding: 10px;
   background-color: #ffffffcc;
@@ -113,12 +127,10 @@ body > header {
 }
 
 body > header > section {
-  display: flex;
-  flex-direction: column;
   justify-content: space-around;
 }
 
-#top-menu {
+#topMenu {
   padding: 10px;
   margin: 0 10px;
   background-color: #ffffffcc;
@@ -128,27 +140,25 @@ body > header > section {
   display: flex;
   justify-content: center;
 }
-#top-menu ul {
-  /* put nav items in a row*/
-  display: flex;
-  flex-direction: row;
+#topMenu > ul > li > span {
+  font-weight: bold;
 }
 
 
-#font-sizer {
-  width: 60px;
-}
-
-#main-header {
+#mainHeader {
   width: 60%;
   text-align: center;
 }
 
-#font-sizer li {
+#fontSizer {
+  width: 60px;
+}
+
+#fontSizer li {
   text-align: center;
 }
 
-#font-sizer li span {
+#fontSizer li span {
   display: inline-block;
   padding: 0 .5em;
   margin: .2em 0;
@@ -157,18 +167,36 @@ body > header > section {
 	box-shadow: 0.2em 0.2em 0.4em #172632;
 }
 
+#fontSizer #smallerFont {
+  font-size: 8px;
+  line-height: 10px;
+}
+#fontSizer #smallFont {
+  font-size: 11px;
+  line-height: 13px;
+}
+#fontSizer #medFont {
+  font-size: 14px;
+  line-height: 16px;
+}
+#fontSizer #largeFont {
+  font-size: 18px;
+  line-height: 20px;
+}
+#fontSizer #largerFont {
+  font-size: 22px;
+  line-height: 24px;
+}
 
-#top-sys-menu ul {
-  /* align li items horozontally */
-  display: flex;
-  flex-direction: column;
+
+#topSysMenu ul {
   justify-content: space-around;
   font-size: 1.4rem;
   font-weight: bold;
   height: 100px;
 }
 
-#top-menu li span {
+#topMenu li span {
   display: inline-block;
   padding: 0 .7em;
   margin: 0 .3em;
@@ -178,12 +206,12 @@ body > header > section {
 	box-shadow: 0.2rem 0.2rem 0.4rem #172632;
 }
 
-#pri-nav ul.nav_info li {
+#priNav ul.nav_info li {
 	width:18em;
 	padding:1em 1em 0 1em;
 }
 
-#pri-nav ul li a {
+#priNav ul li a {
 	display: block;
 }
 
@@ -192,11 +220,18 @@ main > header {
 }
 
 main {
-  /* align articles across the full page */
-  display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 10px 10px 10px;
+}
+
+.thinItem {
+  width: 300px;
+}
+.wideItem {
+  width: 600px;
+}
+.widestItem {
+  width: 100%;
 }
 main > article.thin {
   width: 370px;
@@ -219,9 +254,30 @@ header, article {
   border-radius: 10px;
   margin: 10px 0;
 }
+article ol {
+  list-style: decimal;
+  margin-left: 20px;
+}
+article ol ol {
+  list-style: lower-alpha;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+article ol ol li {
+  width: 600px;
+  margin: 10px;
+  background-color: #1ae70333;
+}
+article ol ol li > section > section {
+  width: 270px;
+  margin-right: 10px;
+}
+article ol ol li > section > aside {
+  width: 280px;
+}
 
 section > header, article > header {
-  /* background-color: #acffa399; */
   background-color: #11960166;
 }
 
@@ -236,32 +292,7 @@ Main header
 	height: 100px;
 }
 
-#font-sizer #smaller-font {
-  font-size: 8px;
-  line-height: 10px;
-  title: "Set Site Font Size to the smallest size font";
-}
-#font-sizer #small-font {
-  font-size: 11px;
-  line-height: 13px;
-  title: "Set Site Font Size to the smaller sized font";
-}
-#font-sizer #med-font {
-  font-size: 14px;
-  line-height: 16px;
-  title: "Set Site Font Size to the medium sized font";
-}
-#font-sizer #large-font {
-  font-size: 18px;
-  line-height: 20px;
-  title: "Set Site Font Size to the larger sized font";
-}
-#font-sizer #larger-font {
-  font-size: 22px;
-  line-height: 24px;
-}
-
-.youtube-video {
+.youtubeVideo {
   margin-top: 10px;
   /* width: 400px;
   height: 225px; */
@@ -284,25 +315,25 @@ table tbody tr:nth-of-type(even) > * {
   background-color: #0000dd09;
 }
 
-.expand-collapse:before {
+.expandCollapse:before {
   font-size: 30px;
   color: #000;
   position: absolute;
   left: 30px;
   padding-top: 15px;
 }
-.expand-collapse section {
+.expandCollapse > section {
   display: none;
 }
-.expand-collapse:before {
+.expandCollapse:before {
   content: '\25b8'; /* Unicode character for Black right-pointing triangle */
   pointer-events: none;
 }
-.expand-collapse.expanded:before {
+.expandCollapse.expanded:before {
   content: '\25be'; /* Unicode character for Black down pointing triangle */
   pointer-events: none;
 }
-.expand-collapse.expanded section {
+.expandCollapse.expanded > section {
   display: block;
 }
 /* .active:after {
@@ -315,10 +346,10 @@ Media adjustments
 */
 
 /* *************************************************************************************
-Table row collapse for thin screens
+Table row dynamically collapse for thin screens using flex
 */
 @media (max-width: 899px) {
-  table thead.wide-screen {
+  table thead {
     display: none;
   }
   table tbody tr {
@@ -328,7 +359,7 @@ Table row collapse for thin screens
     margin-top: 10px;
   }
   table {
-    margin: 50px 0 20px;
+    margin: 10px 0;
     text-align: left;
     border-collapse: collapse;
     border: 1px solid var(--table-border);
@@ -336,7 +367,11 @@ Table row collapse for thin screens
   table tr td, table tr th {
     text-align: left;
     width: 100%;
-}
+  }
+  table tr td strong{
+    text-align: left;
+    width: 100%;
+  }
   
 }
 
@@ -344,7 +379,7 @@ Table row collapse for thin screens
 Normal Table display for wide screens
 */
 @media (min-width: 900px) {
-  table td strong.thin-screen {
+  table td strong {
     display: none;
   }
   table tbody tr {
